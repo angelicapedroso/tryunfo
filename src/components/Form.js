@@ -11,7 +11,7 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -23,6 +23,7 @@ class Form extends Component {
             htmlFor="cardName"
           >
             <input
+              name="cardName"
               type="text"
               data-testid="name-input"
               id="cardName"
@@ -35,6 +36,7 @@ class Form extends Component {
             htmlFor="cardDescription"
           >
             <textarea
+              name="cardDescription"
               data-testid="description-input"
               id="cardDescription"
               value={ cardDescription }
@@ -46,6 +48,7 @@ class Form extends Component {
             htmlFor="cardAttr1"
           >
             <input
+              name="cardAttr1"
               type="number"
               data-testid="attr1-input"
               id="cardAttr1"
@@ -58,6 +61,7 @@ class Form extends Component {
             htmlFor="carAttr2"
           >
             <input
+            name="cardAttr2"
               type="number"
               data-testid="attr2-input"
               id="carAttr2"
@@ -70,6 +74,7 @@ class Form extends Component {
             htmlFor="cardAttr3"
           >
             <input
+              name="cardAttr3"
               type="number"
               data-testid="attr3-input"
               id="cartAttr3"
@@ -80,6 +85,7 @@ class Form extends Component {
 
           <label htmlFor="cardImage">
             <input
+              name="cardImage"
               type="text"
               data-testid="image-input"
               id="cardImage"
@@ -92,6 +98,7 @@ class Form extends Component {
             htmlFor="cardRare"
           >
             <select
+              name="cardRare"
               data-testid="rare-input"
               id="cardRare"
               value={ cardRare }
@@ -107,9 +114,10 @@ class Form extends Component {
             htmlFor="cardTrunfo"
           >
             <input
+              name="cardTrunfo"
               type="checkbox"
               data-testid="trunfo-input"
-              id="cardSuperTrying"
+              id="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
             />
