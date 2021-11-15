@@ -15,9 +15,10 @@ class App extends Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      saveCard: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.validationButton = this.validationButton.bind(this);
   }
 
   onInputChange({ target }) {
@@ -26,11 +27,11 @@ class App extends Component {
     this.setState({
       [name]: value,
     }, () => {
-      this.setState({ isSaveButtonDisabled: this.onSaveButtonClick() });
+      this.setState({ isSaveButtonDisabled: this.validationButton() });
     });
   }
 
-  onSaveButtonClick() {
+  validationButton() {
     const { cardName, cardDescription, cardImage, cardRare } = this.state;
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const inputs = cardName && cardDescription && cardImage && cardRare;
