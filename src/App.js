@@ -8,9 +8,9 @@ class App extends Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
@@ -32,8 +32,18 @@ class App extends Component {
 
   onSaveButtonClick() {
     const { cardName, cardDescription, cardImage, cardRare } = this.state;
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const inputs = cardName && cardDescription && cardImage && cardRare;
+    const attr1 = Number(cardAttr1);
+    const attr2 = Number(cardAttr2);
+    const attr3 = Number(cardAttr3);
+    const maxAttr = 90;
+    const maxSum = 210;
     if (!inputs) return true;
+    if (attr1 + attr2 + attr3 > maxSum) return true;
+    if (attr1 > maxAttr || attr1 < 0) return true;
+    if (attr2 > maxAttr || attr2 < 0) return true;
+    if (attr3 > maxAttr || attr3 < 0) return true;
   }
 
   render() {
