@@ -8,14 +8,16 @@ class App extends Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -23,7 +25,15 @@ class App extends Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => {
+      this.setState({ isSaveButtonDisabled: this.onSaveButtonClick() });
     });
+  }
+
+  onSaveButtonClick() {
+    const { cardName, cardDescription, cardImage, cardRare } = this.state;
+    const inputs = cardName && cardDescription && cardImage && cardRare;
+    if (!inputs) return true;
   }
 
   render() {
@@ -36,12 +46,16 @@ class App extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
 
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form onInputChange={ this.onInputChange } />
+        <Form
+          onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
+        />
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
