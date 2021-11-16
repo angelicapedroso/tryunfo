@@ -52,16 +52,16 @@ class App extends Component {
 
     this.setState((prevState) => ({
       saveCard: [...prevState.saveCard,
-        {
-          cardName,
-          cardImage,
-          cardDescription,
-          cardAttr1,
-          cardAttr2,
-          cardAttr3,
-          cardRare,
-          cardTrunfo,
-        },
+      {
+        cardName,
+        cardImage,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardRare,
+        cardTrunfo,
+      },
       ],
       cardName: '',
       cardDescription: '',
@@ -122,6 +122,18 @@ class App extends Component {
           hasTrunfo={ hasTrunfo }
           saveCard={ saveCard }
         />
+
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
+
         { saveCard.map((card) => (
           <div key={ card.cardName }>
             <Card
