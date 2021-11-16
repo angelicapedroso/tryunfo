@@ -8,17 +8,18 @@ class App extends Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       saveCard: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.validationButton = this.validationButton.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -30,6 +31,43 @@ class App extends Component {
       this.setState({ isSaveButtonDisabled: this.validationButton() });
     });
   }
+
+  // requisito 6 foi feito com ajuda do thiago Ximenes.
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardTrunfo,
+    } = this.state;
+
+    this.setState((prevState) => ({
+      saveCard: [...prevState.saveCard,
+        { cardName,
+          cardImage,
+          cardDescription,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3,
+          cardRare,
+          cardTrunfo,
+        },
+      ],
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+    }));
+  };
 
   validationButton() {
     const { cardName, cardDescription, cardImage, cardRare } = this.state;
@@ -66,6 +104,15 @@ class App extends Component {
         <Form
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
         <Card
           cardName={ cardName }
