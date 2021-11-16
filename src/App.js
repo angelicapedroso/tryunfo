@@ -52,16 +52,16 @@ class App extends Component {
 
     this.setState((prevState) => ({
       saveCard: [...prevState.saveCard,
-      {
-        cardName,
-        cardImage,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardRare,
-        cardTrunfo,
-      },
+        {
+          cardName,
+          cardImage,
+          cardDescription,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3,
+          cardRare,
+          cardTrunfo,
+        },
       ],
       cardName: '',
       cardDescription: '',
